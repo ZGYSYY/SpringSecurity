@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.zgy.security</groupId>
+    <artifactId>zgy-security</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>zgy-security-core</module>
+        <module>zgy-security-browser</module>
+        <module>zgy-security-app</module>
+        <module>zgy-security-demo</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <!--配置变量-->
+    <properties>
+        <zgy.security.version>1.0-SNAPSHOT</zgy.security.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--用于管理项目的依赖，使用后不用再去管理加入的依赖版本号，让spring自己选择最佳的依赖版本-->
+            <dependency>
+                <groupId>io.spring.platform</groupId>
+                <artifactId>platform-bom</artifactId>
+                <version>Cairo-SR5</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--其他一些依赖管理-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Finchley.SR2</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!--maven配置-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <!--源文件版本-->
+                    <source>1.8</source>
+                    <!--打包后的文件版本-->
+                    <target>1.8</target>
+                    <!--文件编码-->
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
