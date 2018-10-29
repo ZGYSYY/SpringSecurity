@@ -22,7 +22,7 @@
         <!--引入Session管理依赖-->
         <dependency>
             <groupId>org.springframework.session</groupId>
-            <artifactId>spring-session-core</artifactId>
+            <artifactId>spring-session</artifactId>
         </dependency>
     </dependencies>
 </project>
