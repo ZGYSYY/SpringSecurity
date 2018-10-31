@@ -3,6 +3,7 @@ package com.zgy.web.controller;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.zgy.dto.User;
 import com.zgy.dto.UserQueryCondition;
+import com.zgy.exception.UserNotExistException;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.springframework.validation.BindingResult;
@@ -49,6 +50,9 @@ public class UserController {
     @GetMapping("/{id:\\d+}")
     @JsonView(User.UserDetailView.class)
     public User getInfo(@PathVariable long id){
+
+//        throw new RuntimeException("user not exist");
+//        throw new UserNotExistException(id+"");
         System.out.println("id："+id);
         User user = new User();
         user.setUsername("ZGY");
@@ -58,9 +62,22 @@ public class UserController {
 
     @PostMapping
     //用法一：加入数据校验框架
-//    public User create(@Valid @RequestBody User user){
+    public User create(@Valid @RequestBody User user){
     //用法二：加入BindingResult类，让数据校验失败后，能继续执行方法，并把校验失败的数据保存在BindingResult对象中
-    public User create(@Valid @RequestBody User user, BindingResult errors){
+//    public User create(@Valid @RequestBody User user, BindingResult errors){
+        //输出数据校验失败的信息
+        /*if(errors.hasErrors()){
+            errors.getAllErrors().stream().forEach(x -> System.out.println(x.getDefaultMessage()));
+        }*/
+
+        System.out.println("user:"+ReflectionToStringBuilder.toString(user,ToStringStyle.MULTI_LINE_STYLE));
+        user.setId("1");
+
+        return user;
+    }
+
+    @PutMapping("/{id:\\d+}")
+    public User update(@Valid @RequestBody User user, BindingResult errors){
         //输出数据校验失败的信息
         if(errors.hasErrors()){
             errors.getAllErrors().stream().forEach(x -> System.out.println(x.getDefaultMessage()));
@@ -70,5 +87,10 @@ public class UserController {
         user.setId("1");
 
         return user;
+    }
+
+    @DeleteMapping("{id:\\d+}")
+    public void delete(@PathVariable long id){
+        System.out.println("Id:"+id);
     }
 }
