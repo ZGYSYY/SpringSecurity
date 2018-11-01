@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import java.util.ArrayList;
 import java.util.List;
 
-@Configuration //表示为一个配置类
+//@Configuration //表示为一个配置类
 public class WebConfig extends WebMvcConfigurerAdapter{
 
     @Autowired

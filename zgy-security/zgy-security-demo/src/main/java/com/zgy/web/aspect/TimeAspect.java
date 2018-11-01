@@ -11,8 +11,8 @@ import java.util.Date;
  * 定义一个切面类
  */
 
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class TimeAspect {
 
     @Around("execution(* com.zgy.web.controller.UserController.*(..))")

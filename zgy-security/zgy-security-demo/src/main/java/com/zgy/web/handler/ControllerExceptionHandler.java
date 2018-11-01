@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * 定义一个控制器的错误处理器
  */
-@ControllerAdvice //表示这个类里面的方法，都是用来处理啊Controller所抛出来的异常
+//@ControllerAdvice //表示这个类里面的方法，都是用来处理啊Controller所抛出来的异常
 public class ControllerExceptionHandler {
 
     @ExceptionHandler(UserNotExistException.class) //处理Controller中抛出UserNotExistException的异常

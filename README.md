@@ -8,3 +8,7 @@
 ## SpringMvc拦截示意图
 
 ![1540999092554](README.assets/1540999092554.png)
+
+## SpringSecurity基本原理
+
+![1541086168553](README.assets/1541086168553.png)
