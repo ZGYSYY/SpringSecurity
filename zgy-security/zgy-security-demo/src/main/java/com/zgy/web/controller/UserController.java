@@ -6,6 +6,10 @@ import com.zgy.dto.UserQueryCondition;
 import com.zgy.exception.UserNotExistException;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -92,5 +96,29 @@ public class UserController {
     @DeleteMapping("{id:\\d+}")
     public void delete(@PathVariable long id){
         System.out.println("Id:"+id);
+    }
+
+    /*
+    获取认证用户的信息方法一
+     *//*
+    @GetMapping("/me")
+    public Object getAuthenticationUser(){
+        return SecurityContextHolder.getContext().getAuthentication();
+    }*/
+
+    /*
+    获取认证用户的信息方法二
+     *//*
+    @GetMapping("/me")
+    public Object getAuthenticationUser(Authentication authentication){
+        return authentication;
+    }*/
+
+    /*
+    获取认证用户的信息方法三，只获取details的信息
+     */
+    @GetMapping("/me")
+    public Object getAuthenticationUser(@AuthenticationPrincipal UserDetails userDetails){
+        return userDetails;
     }
 }

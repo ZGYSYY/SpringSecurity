@@ -12,3 +12,7 @@
 ## SpringSecurity基本原理
 
 ![1541086168553](README.assets/1541086168553.png)
+
+## SpringSecurity基于表单的认证源码流程
+
+![1541227383034](README.assets/1541227383034.png)
